@@ -65,6 +65,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Screenshot
+![Capture](https://user-images.githubusercontent.com/30499733/75129119-90838e00-56ed-11ea-80d0-d203f871222d.PNG)
+
 ## License
 [MIT](https://github.com/ashujhaji/tabzie/blob/master/LICENSE)
 
