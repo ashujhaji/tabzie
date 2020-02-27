@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
     <androidx.viewpager.widget.ViewPager
@@ -13,15 +13,15 @@
         android:layout_marginBottom="50dp" />
 
     <com.pixerapps.tabzie.TabLayout
+        android:id="@+id/mainTab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/forty_five_dp"
-        android:layout_margin="@dimen/ten_dp"
         android:layout_gravity="bottom"
-        android:id="@+id/mainTab"
-        app:siTextSize="@dimen/eleven_sp"
-        app:siTextColor="@color/light_smoke"
-        app:siSelectedTextColor="@color/colorPrimary"
+        android:layout_margin="@dimen/ten_dp"
+        android:background="@color/white"
         app:siIndicatorColor="@android:color/holo_blue_bright"
-        android:background="@color/white" />
+        app:siSelectedTextColor="@color/colorPrimary"
+        app:siTextColor="@color/light_smoke"
+        app:siTextSize="@dimen/eleven_sp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

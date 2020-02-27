@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -76,6 +77,9 @@ public class TabLayout extends FrameLayout {
 
     private float x1, x2;
     static final int MIN_DISTANCE = 10;
+
+    private int _xDelta;
+    private int _yDelta;
 
 
     public TabLayout(Context context) {
@@ -170,12 +174,17 @@ public class TabLayout extends FrameLayout {
             textView.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
+                    final int X = (int) event.getRawX();
+                    final int Y = (int) event.getRawY();
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
-                            x1 = event.getX();
+                            FrameLayout.LayoutParams lParams = (FrameLayout.LayoutParams) springView.getLayoutParams();
+                            _xDelta = X - lParams.leftMargin;
+                            _yDelta = Y - lParams.topMargin;
+                            //x1 = event.getX();
                             break;
                         case MotionEvent.ACTION_UP:
-                            x2 = event.getX();
+                            /*x2 = event.getX();
                             float deltaX = x2 - x1;
 
                             if (Math.abs(deltaX) > MIN_DISTANCE) {
@@ -191,7 +200,15 @@ public class TabLayout extends FrameLayout {
 
                             } else {
                                 // consider as something else - a screen tap for example
-                            }
+                            }*/
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) springView.getLayoutParams();
+                            layoutParams.leftMargin = X - _xDelta;
+                            layoutParams.topMargin = Y - _yDelta;
+                            layoutParams.rightMargin = -250;
+                            layoutParams.bottomMargin = -250;
+                            springView.setLayoutParams(layoutParams);
                             break;
                     }
                     return TabLayout.super.onTouchEvent(event);
