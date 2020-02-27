@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3C3F41</color>
+    <color name="colorAccent">#010D17</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="gray">#c5c5c5</color>
+    <color name="buttonColor">#3FBC8A</color>
+    <color name="buttonColorHighLight">#3FBC8A</color>
+    <color name="blackTransparent">#99000000</color>
+    <color name="red">#E55C5C</color>
+    <color name="red_press">#990000</color>
+    <color name="light_gray">#808080</color>
+    <color name="textColorWhite">#FFFFFF</color>
+    <color name="textColorGray">#808080</color>
+    <color name="textColor">#273444</color><!-- slate dark-->
+    <color name="textColorGreen">#3FBC8A</color>
+    <color name="textColorGreenForTab">#71EBB9</color>
+    <color name="redForTab">#FF8C8C</color>
+    <color name="lightergray">#EEEEEE</color>
+    <color name="blue_grey">#8492A6</color><!--
+    <color name="blue_grey">#98AFC7</color>-->
+    <color name="dark_green">#4CAF50</color>
+    <color name="light_gray1">#F6F6F6</color>
+    <color name="light_slate">#8492A6</color>
+    <color name="light_snow">#F9FAFC</color>
+    <color name="medium_blue">#4CCFFF</color>
+    <color name="medium_snow">#EFF2F7</color>
+    <color name="dark_snow">#E5E9F2</color>
+    <color name="light_orange">#FF9E7C</color>
+    <color name="medium_slate">#3C4858</color>
+    <color name="searchTabColor">#325773</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="light_smoke">#C0CCDA</color>
+    <color name="graph_color">#ff8533</color>
+
+
+    <!--  ******************************************************-->
+    <!--  *****************DARK BG CHANGES**********************-->
+    <!--  ******************************************************-->
+    <color name="colorPrimaryDark">#2B2B2B</color>
+    <color name="colorPrimaryMedium">#28435a</color>
+    <color name="colorPrimaryLight">#1f3448</color>
+    <color name="colorPrimaryDarkBG">#1c2f40</color>
+    <color name="whiteLight">#F2F2F2</color>
 </resources>

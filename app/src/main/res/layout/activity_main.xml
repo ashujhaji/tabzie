@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
     <androidx.viewpager.widget.ViewPager
@@ -11,10 +12,16 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp" />
 
-    <com.pixerapps.tabby.TabLayout
-        android:id="@+id/tabLayout"
+    <com.pixerapps.tabzie.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom" />
+        android:layout_height="@dimen/forty_five_dp"
+        android:layout_margin="@dimen/ten_dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/mainTab"
+        app:siTextSize="@dimen/eleven_sp"
+        app:siTextColor="@color/light_smoke"
+        app:siSelectedTextColor="@color/colorPrimary"
+        app:siIndicatorColor="@android:color/holo_blue_bright"
+        android:background="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

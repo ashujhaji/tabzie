@@ -64,7 +64,7 @@ public class IndicatorView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawRoundRect(new RectF(coordinates.getLeft(), coordinates.getTop(), coordinates.getRight(), coordinates.getBottom()), 100, 100, paint);
+        canvas.drawRoundRect(new RectF(coordinates.getLeft(),coordinates.getTop(),coordinates.getRight(),coordinates.getBottom()),100,100,paint);
         super.onDraw(canvas);
     }
 
@@ -95,7 +95,7 @@ public class IndicatorView extends View {
         animatorSet.start();
     }
 
-    public Coordinates getCoordinates() {
+    public Coordinates getCoordinates(){
         return coordinates;
     }
 
