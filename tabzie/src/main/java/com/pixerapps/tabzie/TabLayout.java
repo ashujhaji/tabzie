@@ -27,11 +27,13 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -50,7 +52,7 @@ import java.util.List;
 
 public class TabLayout extends FrameLayout {
 
-    private static final int INDICATOR_ANIM_DURATION =10000;
+    private static final int INDICATOR_ANIM_DURATION = 10000;
 
     private float acceleration = 200f;
     private float headMoveOffset = 200f;
@@ -74,6 +76,9 @@ public class TabLayout extends FrameLayout {
     private ViewPager.OnPageChangeListener delegateListener;
     private TabClickListener tabClickListener;
     private ObjectAnimator indicatorColorAnim;
+
+    private float screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    private ArrayList<Float> tabXCords = new ArrayList();
 
     private float x1, x2;
     static final int MIN_DISTANCE = 10;
@@ -127,6 +132,9 @@ public class TabLayout extends FrameLayout {
         addPointView();
         addTabContainerView();
         addTabItems();
+        for (int i = 0; i <= tabs.size(); i++) {
+            tabXCords.add(i * screenWidth / tabs.size());
+        }
     }
 
     private void addPointView() {
@@ -171,6 +179,8 @@ public class TabLayout extends FrameLayout {
                 }
             });
 
+            //  springView.setOnTouchListener(new DragExperimentTouchListener(springView.getX(),springView.getY()));
+
             textView.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -184,30 +194,32 @@ public class TabLayout extends FrameLayout {
                             //x1 = event.getX();
                             break;
                         case MotionEvent.ACTION_UP:
-                            /*x2 = event.getX();
-                            float deltaX = x2 - x1;
 
-                            if (Math.abs(deltaX) > MIN_DISTANCE) {
-                                // Left to Right swipe action
-                                if (x2 > x1) {
-                                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                            for (int i = 0; i < tabXCords.size(); i++) {
+                                if (springView.getX() > Float.parseFloat(tabXCords.get(i).toString()) && springView.getX() < Float.parseFloat(tabXCords.get(i + 1).toString())) {
+                                    if (springView.getX()-Float.parseFloat(tabXCords.get(i).toString()) > Float.parseFloat(tabXCords.get(i+1).toString())-springView.getX()){
+                                        springView.getCoordinates().setLeft(tabXCords.get(i+1)-springView.getX());
+                                        springView.getCoordinates().setRight((tabXCords.get(i+1)-springView.getX())+screenWidth/tabs.size());
+                                        springView.postInvalidate();
+                                        Log.d("coordPoint", "" + tabXCords.get(i+1));
+                                        Log.d("coordPoint", "" + tabXCords.get(i+2));
+                                        break;
+                                    }else {
+                                        springView.getCoordinates().setLeft(springView.getX()-tabXCords.get(i));
+                                        springView.getCoordinates().setRight((springView.getX()-tabXCords.get(i))+screenWidth/tabs.size());
+                                        springView.postInvalidate();
+                                        Log.d("coordPoint", "" + tabXCords.get(i));
+                                        Log.d("coordPoint", "" + tabXCords.get(i+1));
+                                        break;
+                                    }
                                 }
+                            }
 
-                                // Right to left swipe action
-                                else {
-                                    viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-                                }
-
-                            } else {
-                                // consider as something else - a screen tap for example
-                            }*/
                             break;
                         case MotionEvent.ACTION_MOVE:
                             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) springView.getLayoutParams();
                             layoutParams.leftMargin = X - _xDelta;
-                            layoutParams.topMargin = Y - _yDelta;
                             layoutParams.rightMargin = -250;
-                            layoutParams.bottomMargin = -250;
                             springView.setLayoutParams(layoutParams);
                             break;
                     }
@@ -258,7 +270,6 @@ public class TabLayout extends FrameLayout {
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                 if (position < tabs.size() - 1) {
                     // x
                     float headX = 1f;
@@ -347,4 +358,5 @@ public class TabLayout extends FrameLayout {
     public void setOnTabClickListener(TabClickListener listener) {
         this.tabClickListener = listener;
     }
+
 }
